@@ -1,6 +1,6 @@
 {
   "name": "promise-hash",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "description": "Adds an RSVP-like Promise.hash() method for resolving groups of promises.",
   "main": "index.js",
   "directories": {
