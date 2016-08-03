@@ -36,6 +36,6 @@ const promises = {
 };
 
 Promise.hash(promises).then(results => {
-  console.log(results);
+  console.log(results); // { promise1: 'this is the first promise', promise2: ... }
 });
 ```
