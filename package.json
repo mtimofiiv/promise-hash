@@ -1,0 +1,32 @@
+{
+  "name": "promise-hash",
+  "version": "0.0.0",
+  "description": "Adds an RSVP-like Promise.hash() method for resolving groups of promises.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mtimofiiv/promise-hash.git"
+  },
+  "keywords": [
+    "promise",
+    "nodejs",
+    "hash",
+    "promises"
+  ],
+  "author": "Mike Timofiiv (https://fiiv.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtimofiiv/promise-hash/issues"
+  },
+  "homepage": "https://github.com/mtimofiiv/promise-hash#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0"
+  }
+}
