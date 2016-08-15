@@ -39,3 +39,7 @@ Promise.hash(promises).then(results => {
   console.log(results); // { promise1: 'this is the first promise', promise2: ... }
 });
 ```
+
+## Nodejs Garbage Collection
+
+If you start getting `Promise.hash is not a function`, then the culprit is Nodejs's garbage collection. I'm looking into ways of solving this properly (feel free to send me a note if you know a good way!), but in the meantime, try putting the `require` into an active closure.
