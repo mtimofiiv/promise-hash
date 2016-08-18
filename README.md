@@ -1,4 +1,4 @@
-# promise-hash
+# promise-hash [![npm](https://img.shields.io/npm/dm/promise-hash.svg)](https://www.npmjs.com/package/promise-hash) [![Travis](https://img.shields.io/travis/mtimofiiv/promise-hash.svg?maxAge=2592000)](https://travis-ci.org/mtimofiiv/promise-hash)
 
 In the current [Promises](https://www.promisejs.org/) implementation that Node.js uses, there exists the `Promise.all()` method, which resolves an array of promises. But what that implementation really misses is the way the [rsvp](https://github.com/tildeio/rsvp.js/) library allows you to pass an object to a promise and retain the data structure of that promise.
 
