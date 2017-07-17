@@ -1,1 +1,5 @@
-module.exports = require('./lib/promise-hash');
+const hash = require('./lib/promise-hash');
+
+if (Promise) Promise.hash = hash
+
+module.exports = hash

@@ -18,6 +18,13 @@ require('promise-hash');
 
 Because it functions as a _polyfill_, all you need to do is include this in your code and the `Promise` object will be polyfilled to include the `#hash()` method.
 
+If you prefer to not to polyfill the `Promise` object, you can use it directly:
+
+```js
+var hash = require('promise-hash/lib/promise-hash')
+
+```
+
 ## Usage Example
 
 ```js
