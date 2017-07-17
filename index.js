@@ -1,1 +1,1 @@
-require('./lib/promise-hash');
+module.exports = require('./lib/promise-hash');
