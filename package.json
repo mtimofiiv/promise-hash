@@ -1,6 +1,6 @@
 {
   "name": "promise-hash",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Adds an RSVP-like Promise.hash() method for resolving groups of promises.",
   "main": "index.js",
   "directories": {
@@ -21,7 +21,8 @@
   ],
   "author": "Mike Timofiiv (https://fiiv.io)",
   "contributors": [
-    "mscalora <mike@scalora.org>"
+    "mscalora <mike@scalora.org>",
+    "guillermoroblesjr"
   ],
   "license": "MIT",
   "bugs": {
