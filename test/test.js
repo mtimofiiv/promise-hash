@@ -1,8 +1,10 @@
 'use strict';
 
 const expect = require('chai').expect;
-
-require('../lib/promise-hash');
+// non-polyfill version
+const hash = require('../lib/promise-hash');
+// polyfill version
+require('../index')
 
 function dummyPromise(value) {
   return new Promise((resolve, reject) => {
@@ -47,6 +49,10 @@ describe('promise-hash library', () => {
 
       done();
     });
+  });
+
+  it('Promise#hash() method is same as pollyfill', () => {
+    expect(Promise.hash).to.equal(hash);
   });
 
 });
