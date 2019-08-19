@@ -1,58 +1,48 @@
-'use strict';
+const assert = require('assert')
 
-const expect = require('chai').expect;
 // non-polyfill version
-const hash = require('../lib/promise-hash');
+const hash = require('../lib/promise-hash')
 // polyfill version
 require('../index')
 
-function dummyPromise(value) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, 1, value);
-  });
+const dummyPromise = value => new Promise((resolve, reject) => {
+  setTimeout(resolve, 1, value)
+})
+
+const run = async () => {
+  console.log('=> Running test suite for npm module `promise-hash`...')
+
+  console.info('=> Promise#hash() method is polyfilled')
+  assert(Promise.hash)
+
+  console.info('=> Promise#hash() returns a standard Promise object')
+  const promises1 = { one: dummyPromise('promises.one') }
+  assert(Promise.hash(promises1) instanceof Promise)
+
+  console.info('=> Promise#hash() to resolve a hash of promises')
+  const promises2 = {
+    one: dummyPromise('promises.one'),
+    two: dummyPromise('promises.two'),
+    three: dummyPromise('promises.three'),
+    four: dummyPromise('promises.four')
+  }
+
+  const results2 = await Promise.hash(promises2)
+  assert.deepStrictEqual(results2, {
+    one: 'promises.one',
+    two: 'promises.two',
+    three: 'promises.three',
+    four: 'promises.four'
+  })
+
+  console.info('=> Promise#hash() non-polyfill === polyfill function')
+  assert.deepStrictEqual(Promise.hash, hash)
 }
 
-describe('promise-hash library', () => {
-
-  it('Promise#hash() method is polyfilled', () => {
-    expect(Promise).to.have.property('hash');
-  });
-
-  it('Promise#hash() returns a standard Promise object', () => {
-    const promises = {
-      one: dummyPromise('promises.one')
-    };
-
-    expect(Promise.hash(promises)).to.be.instanceof(Promise);
-  });
-
-  it('Promise#hash() to resolve a hash of promises', (done) => {
-    const promises = {
-      one: dummyPromise('promises.one'),
-      two: dummyPromise('promises.two'),
-      three: dummyPromise('promises.three'),
-      four: dummyPromise('promises.four')
-    };
-
-    Promise.hash(promises).then((results) => {
-      expect(results).to.have.property('one');
-      expect(results.one).to.equal('promises.one');
-
-      expect(results).to.have.property('two');
-      expect(results.two).to.equal('promises.two');
-
-      expect(results).to.have.property('three');
-      expect(results.three).to.equal('promises.three');
-
-      expect(results).to.have.property('four');
-      expect(results.four).to.equal('promises.four');
-
-      done();
-    });
-  });
-
-  it('Promise#hash() method is same as pollyfill', () => {
-    expect(Promise.hash).to.equal(hash);
-  });
-
-});
+run().then(() => {
+  console.log('=> Suite run complete, no problems!')
+  process.exit()
+}).catch(error => {
+  console.error(error)
+  process.exit(2)
+})
